@@ -2,12 +2,18 @@
 if (navigator.serviceWorker) {
     navigator.serviceWorker.register('/sw.js')
         .then(reg => {
-            setTimeout(() => {
-                reg.sync.register('posteo-gatitos');
-                console.log('se enviaron fotos');
-            }, 3000);
+            // setTimeout(() => {
+            //     reg.sync.register('posteo-gatitos');
+            //     console.log('se enviaron fotos');
+            // }, 3000);
+            Notification.requestPermission().then(result => {
+                console.log(result);
+                reg.showNotification('hola mundo');
 
+            });
         });
+
+
 }
 
 // fetch('https://reqres.in/api/users')

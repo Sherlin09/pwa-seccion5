@@ -40,3 +40,12 @@ self.addEventListener('sync', event => {
 
 
 });
+
+//PUSH
+
+self.addEventListener('push', event => {
+
+
+    console.log('pu');
+
+});
