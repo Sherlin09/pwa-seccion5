@@ -3,12 +3,12 @@
 self.addEventListener('install', event => {
     console.log('instalando sw :)');
 
-    const instalacion = new Promise((resulve, reject) => {
+    const instalacion = new Promise((resolve, reject) => {
         setTimeout(() => {
-            console.log('SW: Instalaciones terminadass');
+            console.log('SW: Instalacioness terminadass');
             self.skipWaiting();
             resolve();
-        }, 1000);
+        }, 1);
 
     });
 
@@ -18,4 +18,15 @@ self.addEventListener('install', event => {
 //Cuando el SW toma el control de la app
 self.addEventListener('activate', event => {
     console.log(':) activo y listo');
+});
+
+//FETCH
+self.addEventListener('fetch', event => {
+    console.log('SW:', event.request.url);
+
+    if (event.request.url.includes('https://reqres.in/')) {
+        const resp = new Response(`{ok: false, mensaje: 'jajja'}`);
+
+        event.respondWith(resp);
+    }
 });
